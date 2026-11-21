@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="es">
 <head>
-<meta charset="utf-8">
+<meta charset="utf-8"><script>/* busca las imágenes en la raíz o en la carpeta assets */(function(){try{var x=new XMLHttpRequest();x.open("HEAD","mth-diseno.jpg",false);x.send();if(x.status>=400)document.write('<base href="assets/">');}catch(e){}})();</script>
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#041416">
 <title>Mega Tribu Hispana</title>
@@ -21,7 +21,7 @@ body{background:
 .esc{position:fixed;inset:0;height:var(--alto);display:grid;place-items:center}
 
 /* ===== recorte del diseño aprobado ===== */
-.r{display:block;position:relative;background-image:url(assets/mth-diseno.jpg);background-repeat:no-repeat;
+.r{display:block;position:relative;background-image:url(mth-diseno.jpg);background-repeat:no-repeat;
  background-size:calc(1672 / var(--w) * 100%) auto;
  background-position:calc(var(--x) / (1672 - var(--w)) * 100%) calc(var(--y) / (941 - var(--h)) * 100%);
  aspect-ratio:var(--w)/var(--h);border-radius:8px;cursor:pointer;transition:filter .2s,box-shadow .2s}
@@ -29,12 +29,12 @@ a.r:hover,a.r:focus-visible{filter:brightness(1.15);box-shadow:0 0 0 2px #ffd56b
 
 /* ===== modo LIENZO (web / tablet horizontal): el diseño completo, escalado ===== */
 .lienzo{position:relative;width:min(100vw,calc(var(--alto) * 1672 / 941));aspect-ratio:1672/941;
- background:url(assets/mth-diseno.jpg) center/100% 100% no-repeat;border-radius:10px;
+ background:url(mth-diseno.jpg) center/100% 100% no-repeat;border-radius:10px;
  box-shadow:0 0 0 1px rgba(0,0,0,.7),0 0 0 3px rgba(212,170,80,.55),0 20px 60px rgba(0,0,0,.8),0 0 50px rgba(212,170,80,.18)}
 .lienzo .r{background-image:none!important;position:absolute;left:calc(var(--x) / 16.72 * 1%);top:calc(var(--y) / 9.41 * 1%);width:calc(var(--w) / 16.72 * 1%);height:calc(var(--h) / 9.41 * 1%);aspect-ratio:auto;background:none}
 .lienzo .titulo,.lienzo .fila-titulo{display:none}
 .lienzo .paises{position:absolute;left:.6%;top:52.3%;width:98.8%;height:9.6%;background:#041214;border-radius:6px}
-.lienzo .audio{position:absolute;left:1.67%;top:44.6%;width:96.65%;height:5.1%}
+.lienzo .audio{position:absolute;left:1.5%;top:42.9%;width:97%;height:7.5%}
 .lienzo .bloque{display:contents}
 
 /* ===== modo COLUMNA (celular / vertical) ===== */
@@ -80,7 +80,7 @@ a.r:hover,a.r:focus-visible{filter:brightness(1.15);box-shadow:0 0 0 2px #ffd56b
 .audio{display:flex;align-items:center;gap:1.2%;padding:0 1.5%;border-radius:40px;border:1.5px solid #d6a648;
  background:linear-gradient(180deg,#0c2427,#030c0e);box-shadow:inset 0 0 10px rgba(255,200,90,.18),0 0 10px rgba(255,190,70,.2)}
 .av{height:84%;aspect-ratio:1;border-radius:50%;flex:none;border:1.5px solid #e2b553;
- background:url(assets/mth-diseno.jpg) no-repeat;background-size:calc(1672/70*100%) auto;background-position:calc(101/(1672 - 70)*100%) calc(408/(941 - 66)*100%)}
+ background:url(mth-diseno.jpg) no-repeat;background-size:calc(1672/70*100%) auto;background-position:calc(101/(1672 - 70)*100%) calc(408/(941 - 66)*100%)}
 .nom{font:italic 700 clamp(12px,1.35vw,22px) Georgia,serif;color:#fff1cf;flex:none}
 .play{flex:none;height:72%;aspect-ratio:1;border-radius:50%;border:1.5px solid #e2b553;background:radial-gradient(#3b2a07,#0a0703);color:#ffd56b;font-size:clamp(11px,1vw,17px);cursor:pointer;padding:0}
 .t{flex:none;font:600 clamp(10px,.9vw,14px) Georgia,serif;color:#f3e3bd;font-variant-numeric:tabular-nums}
@@ -90,6 +90,7 @@ a.r:hover,a.r:focus-visible{filter:brightness(1.15);box-shadow:0 0 0 2px #ffd56b
 #aviso{position:fixed;left:50%;bottom:20px;transform:translateX(-50%);padding:8px 14px;border-radius:30px;background:#000;border:1px solid #d6a648;color:#ffe6a6;opacity:0;transition:.3s;pointer-events:none;z-index:9}
 #aviso.v{opacity:1}
 @media(max-height:640px){.columna{gap:3px}.columna .arenas .r{height:40px}.columna .audio{height:38px}.columna .paises{min-height:50px}.titulo{font-size:11px}}
+.lienzo .audio{background:linear-gradient(180deg,#0c2427,#030c0e)!important}
 </style>
 </head>
 <body>
@@ -119,7 +120,7 @@ a.r:hover,a.r:focus-visible{filter:brightness(1.15);box-shadow:0 0 0 2px #ffd56b
   <canvas class="onda" id="onda" aria-label="Avance del audio"></canvas>
   <span class="t" id="dur">1:01</span>
   <button class="vol" id="vol" type="button" aria-label="Silenciar">🔊</button>
-  <audio id="audio" preload="metadata" src="assets/marcela.mp3"></audio>
+  <audio id="audio" preload="metadata" src="marcela.mp3"></audio>
  </div>
 
  <div class="titulo">Países</div>
@@ -192,7 +193,7 @@ alto();modo();addEventListener('resize',function(){alto();modo();});
 /* países */
 var c=document.getElementById('carril');
 PAISES.forEach(function(p){var b=document.createElement('button');b.type='button';b.className='pais';b.setAttribute('aria-label',p[2]);
- b.innerHTML='<img alt="" loading="lazy" src="assets/'+p[0]+'.jpg"><span>'+p[1]+' '+p[2]+'</span>';b.onclick=function(){abrir(L.grupo);};c.appendChild(b);});
+ b.innerHTML='<img alt="" loading="lazy" src="'+p[0]+'.jpg"><span>'+p[1]+' '+p[2]+'</span>';b.onclick=function(){abrir(L.grupo);};c.appendChild(b);});
 var m=document.createElement('button');m.type='button';m.className='pais mas';m.innerHTML='＋<br>Más países';m.onclick=function(){abrir(L.unete);};c.appendChild(m);
 var pausa=0;function paso(){var p=c.querySelector('.pais');return p?p.offsetWidth+4:100;}
 document.querySelector('.fl.i').onclick=function(){pausa=Date.now()+8000;c.scrollBy({left:-paso()*2});};
